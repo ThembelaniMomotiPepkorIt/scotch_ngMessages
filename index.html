@@ -1,12 +1,50 @@
-<!DOCTYPE html lang="en">
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 	<head>
 		<title>Scotch.io ngMessages Tutorial</title>
-		
+		<meta http-equiv="X-AU-Compatible" content="IE=Edge">
+		<meta charset="UTF-8">
+		<script src="//code.angularjs.org/1.4.0/angular.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+		<!--<script src= "angular.min.js"></script>
+		<script src= "angular-messages.min.js"></script>-->
+		<script src="lib/app.js"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</head>
 	
-	<body>
-		<h1>ngMessages</h1>
+	<body class="container" ng-app="app" ng-controller="MainCtrl as main">
+		<div class="col-md-4 col-md-offset-4">
+		<h3>ngMessages</h3>
+		</div>
+		<hr>
+		
+			<form name="userForm" class="col-md-4 col-md-offset-4">
+  				<div class="form-group">
+  					<label>Name</label>
+    					<input type="text" name="name" class="form-control has-feedback"
+    							ng-model="main.name"
+    							ng-minlength="5"
+    							ng-maxlength="10"
+    							required>
+    			</div>
+    			<div class="form-group">
+  					<label>Email</label>
+    					<input type="email" name="email" class="form-control"
+    							ng-model="main.email"
+    							ng-minlength="5"
+    							ng-maxlength="20"
+    							required>
+    			</div>
+    			<div class="form-group">
+    				<button type= "submit" class="btn btn-danger">Submit</button>
+    			</div>
+			</form>
+	
+			<div class="help-block" ng-messages="userForm.name.$error" ng-show="userForm.name.$touched">
+				<div ng-messages-include="messages.html"></div>
+
+			</div>
+
 	</body>
 
 
